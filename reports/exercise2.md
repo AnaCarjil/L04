@@ -1,6 +1,16 @@
 # Bug reports for exercise2.py
 
-Line: 13
-Problem: The function incorrectly uses `min(x, low)` and then `max(low, ...)` which results in always returning `low` when `x < low`. The logic is flawed because `min(x, low)` should compare `x` with `high`, not `low`. 
-Example: clamp(3, 1, 10) returns 1, expected 3
+Line: 3
+Problem: is_passing returns False for a grade of exactly 5, but the docstring says "True if the grade is 5 or more".
+Example: is_passing(5) returns False, expected True.
+Fix: return grade >= 5
+
+Line: 8
+Problem: is_valid_password rejects passwords with exactly 8 characters, but the docstring says "at least 8 characters".
+Example: is_valid_password("12345678") returns False, expected True.
+Fix: return len(password) >= 8 and any(c.isdigit() for c in password)
+
+Line: 12
+Problem: clamp returns max(low, min(x, low)), which is always low, not the correct clamping to [low, high]. It should clamp x to be at least low and at most high.
+Example: clamp(10, 5, 15) returns 5, expected 10.
 Fix: return max(low, min(x, high))
