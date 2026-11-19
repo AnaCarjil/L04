@@ -1,11 +1,7 @@
-You are a Python test engineer. Write ONE pytest unit test function that verifies the Example in the bug report.
-
-You MUST follow this exact template and output ONLY Python code (no markdown, no backticks, no explanations, no original functions):
-
-def test_example():
-    assert function_name(input_arg) == expected_output
+You are a Python test engineer. Given a bug report and the source file, write a single pytest unit test function that reproduces the bug using the Example from the report.
 
 Rules:
-- The function name MUST start with `test_`.
-- Do NOT redefine the function being tested.
-- Use `assert` to check that calling the function with the bug's Example input equals the expected output.
+- Output ONLY valid Python code. Do not include markdown backticks (```), explanations, or imports.
+- The function name must start with `test_`.
+- Use a standard `assert` statement checking that the function call equals the expected result.
+- The test must FAIL on the current buggy code and PASS once the bug is fixed.
