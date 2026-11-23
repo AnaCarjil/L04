@@ -1,0 +1,23 @@
+import os
+import sqlite3
+import subprocess
+
+import pytest
+
+import exercise4
+from exercise4 import *
+
+
+# bug report 1
+def test_r1_check_admin_empty_password():
+    assert check_admin("") == False
+
+
+# bug report 2
+def test_r2_find_user_sql_injection():
+    # Test with a malicious username that attempts to drop the users table
+    malicious_username = "'; DROP TABLE users; --"
+    result = find_user(None, malicious_username)
+    # The function should not execute malicious SQL, but currently it does
+    # This test will fail on the current buggy code and pass when fixed
+    assert result is None  # The fix should prevent execution of malicious SQL
